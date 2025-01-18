@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Gonzales Unit 4 Chem Review</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            transition: background 0.3s, color 0.3s;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        header h1:hover {
+            background: #66BB6A;
+            color: #fff;
+        }
+
+        header p {
+            font-size: 1.3em;
+            transition: color 0.3s;
+        }
+
+        header p:hover {
+            color: #dff0d8;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .toc h2 {
+            margin-bottom: 15px;
+            color: #4CAF50;
+            font-size: 2em;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .toc h2:hover {
+            color: #66BB6A;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 12px 0;
+            transition: transform 0.3s;
+        }
+
+        .toc li:hover {
+            transform: translateX(10px);
+        }
+
+        .toc a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #4CAF50;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 1s forwards;
+            transition: background 0.3s;
+        }
+
+        section:hover {
+            background: #f9f9f9;
+        }
+
+        section h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 2em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        section h2:hover {
+            background: #66BB6A;
+            color: #fff;
+        }
+
+        /* Dropdown Content */
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+        }
+
+        section.active .content {
+            max-height: 3000px; /* Increased from 1000px to 3000px */
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 15px 0;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* Practice Test */
+        .practice-test {
+            background: #fff3cd;
+            padding: 25px 30px;
+            border-radius: 10px;
+            border: 2px solid #ffeeba;
+            animation: fadeIn 1.5s ease-out;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .practice-test h2 {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 2px solid #856404;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .practice-test h2:hover {
+            color: #f0ad4e;
+        }
+
+        .practice-test ol {
+            list-style: decimal inside;
+        }
+
+        .practice-test li {
+            margin: 20px 0;
+            transition: background 0.3s;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .practice-test li:hover {
+            background: #fff8e1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Accordion Icons */
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        section.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .toc, section, .practice-test {
+                padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .practice-test li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Practice Test Answers */
+        .answer {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #155724;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .show-answer {
+            cursor: pointer;
+            color: #155724;
+            text-decoration: underline;
+            margin-left: 10px;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .show-answer:hover {
+            color: #0b2e13;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Mr. Gonzales Unit 4 Chem Review</h1>
+        <p>Prepare effectively for your upcoming test with this comprehensive review.</p>
+    </header>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#net-ionic-equations">Net Ionic Equations</a></li>
+            <li><a href="#ionic-bonds">Ionic Bonds</a></li>
+            <li><a href="#precipitation-reactions">Precipitation Reactions</a></li>
+            <li><a href="#acid-base-reactions">Acid-Base Reactions</a></li>
+            <li><a href="#oxidation-reduction">Oxidation-Reduction Reactions</a></li>
+            <li><a href="#physical-chemical-changes">Physical vs Chemical Changes</a></li>
+            <li><a href="#practice-test">Practice Test</a></li>
+        </ul>
+    </div>
+
+    <!-- Net Ionic Equations Section -->
+    <section id="net-ionic-equations">
+        <h2>Net Ionic Equations <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p>Net ionic equations focus on the chemical species that are directly involved in a reaction, excluding the spectator ions. This simplifies the equation to its essential components.</p>
+            <p><strong>Example:</strong> For the reaction between silver nitrate and sodium chloride:</p>
+            <p><em>AgNO<sub>3</sub>(aq) + NaCl(aq) → AgCl(s) + NaNO<sub>3</sub>(aq)</em></p>
+            <p>The net ionic equation is:</p>
+            <p><em>Ag<sup>+</sup>(aq) + Cl<sup>-</sup>(aq) → AgCl(s)</em></p>
+        </div>
+    </section>
+
+    <!-- Ionic Bonds Section -->
+    <section id="ionic-bonds">
+        <h2>Ionic Bonds <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p>Ionic bonds are formed through the electrostatic attraction between oppositely charged ions. This type of bonding typically occurs between metals and non-metals.</p>
+            <p><strong>Evidence of Ionic Bonds:</strong></p>
+            <ul>
+                <li>Formation of a precipitate.</li>
+                <li>High melting and boiling points.</li>
+                <li>Conductivity in molten or dissolved states.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Precipitation Reactions Section -->
+    <section id="precipitation-reactions">
+        <h2>Precipitation Reactions <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p>Precipitation reactions occur when two aqueous solutions combine to form an insoluble solid, known as a precipitate.</p>
+            <p><strong>Example:</strong> Mixing aqueous solutions of barium chloride and sodium sulfate results in the formation of barium sulfate precipitate:</p>
+            <p><em>BaCl<sub>2</sub>(aq) + Na<sub>2</sub>SO<sub>4</sub>(aq) → BaSO<sub>4</sub>(s) + 2NaCl(aq)</em></p>
+        </div>
+    </section>
+
+    <!-- Acid-Base Reactions Section -->
+    <section id="acid-base-reactions">
+        <h2>Acid-Base Reactions <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p>Acid-base reactions involve the transfer of protons (H<sup>+</sup>) between reactants. According to the Brønsted-Lowry theory, an acid donates a proton, while a base accepts a proton.</p>
+            <p><strong>Example:</strong> Neutralization of hydrochloric acid with sodium hydroxide:</p>
+            <p><em>HCl(aq) + NaOH(aq) → NaCl(aq) + H<sub>2</sub>O(l)</em></p>
+            <p>The net ionic equation is:</p>
+            <p><em>H<sup>+</sup>(aq) + OH<sup>-</sup>(aq) → H<sub>2</sub>O(l)</em></p>
+        </div>
+    </section>
+
+    <!-- Oxidation-Reduction Reactions Section -->
+    <section id="oxidation-reduction">
+        <h2>Oxidation-Reduction Reactions <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p>Oxidation-reduction (redox) reactions involve the transfer of electrons between species. Oxidation refers to the loss of electrons, while reduction refers to the gain of electrons.</p>
+            <p><strong>Example:</strong> Reaction between zinc and copper(II) sulfate:</p>
+            <p><em>Zn(s) + CuSO<sub>4</sub>(aq) → ZnSO<sub>4</sub>(aq) + Cu(s)</em></p>
+            <p><strong>Half-Reactions:</strong></p>
+            <ul>
+                <li>Oxidation: Zn(s) → Zn<sup>2+</sup>(aq) + 2e<sup>-</sup></li>
+                <li>Reduction: Cu<sup>2+</sup>(aq) + 2e<sup>-</sup> → Cu(s)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Physical vs Chemical Changes Section -->
+    <section id="physical-chemical-changes">
+        <h2>Physical vs Chemical Changes <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content">
+            <p><strong>Physical Changes:</strong> Changes that do not alter the chemical identity of a substance. Examples include changes in state, shape, or size.</p>
+            <p><strong>Chemical Changes:</strong> Changes that result in the formation of new substances with different chemical properties. Examples include reactions that produce gas, color change, precipitate formation, or temperature change.</p>
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><em>Physical:</em> Melting ice, dissolving sugar in water.</li>
+                <li><em>Chemical:</em> Burning wood, reacting vinegar with baking soda.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice Test Section -->
+    <section id="practice-test">
+        <h2>Practice Test <span class="toggle-icon">&#9660;</span></h2>
+        <div class="content practice-test">
+            <h3>Answer the following questions to test your understanding:</h3>
+            <ol>
+                <!-- Question 1 -->
+                <li>
+                    Which of the following is the correct net ionic equation for the reaction between magnesium chloride and potassium hydroxide?
+                    <ul>
+                        <li>A) Mg<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) → Mg(OH)<sub>2</sub>(s)</li>
+                        <li>B) MgCl<sub>2</sub>(aq) + 2KOH(aq) → Mg(OH)<sub>2</sub>(s) + 2KCl(aq)</li>
+                        <li>C) Mg<sup>2+</sup>(aq) + 2Cl<sup>-</sup>(aq) + 2K<sup>+</sup>(aq) + 2OH<sup>-</sup>(aq) → Mg(OH)<sub>2</sub>(s) + 2K<sup>+</sup>(aq) + 2Cl<sup>-</sup>(aq)</li>
+                        <li>D) 2KOH(aq) + MgCl<sub>2</sub>(aq) → 2K<sup>+</sup>(aq) + 2Cl<sup>-</sup>(aq) + Mg(OH)<sub>2</sub>(s)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> A) Mg<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) → Mg(OH)<sub>2</sub>(s)
+                    </div>
+                </li>
+                <!-- Question 2 -->
+                <li>
+                    What indicates that an acid-base neutralization reaction has reached its equivalence point during a titration?
+                    <ul>
+                        <li>A) The solution turns colorless.</li>
+                        <li>B) The pH rapidly changes.</li>
+                        <li>C) No color change is observed.</li>
+                        <li>D) The temperature remains constant.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) The pH rapidly changes.
+                    </div>
+                </li>
+                <!-- Question 3 -->
+                <li>
+                    If 4 moles of reactant X react with 3 moles of reactant Y to produce product Z, how many moles of Z are produced when 8 moles of X react with 6 moles of Y?
+                    <ul>
+                        <li>A) 8 moles</li>
+                        <li>B) 12 moles</li>
+                        <li>C) 16 moles</li>
+                        <li>D) 24 moles</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) 12 moles
+                    </div>
+                </li>
+                <!-- Question 4 -->
+                <li>
+                    Which observation is a clear indicator that a chemical reaction has occurred when two solutions are mixed?
+                    <ul>
+                        <li>A) The mixture becomes transparent.</li>
+                        <li>B) A gas is evolved or a precipitate forms.</li>
+                        <li>C) The mixture becomes homogeneous.</li>
+                        <li>D) The temperature of the mixture decreases.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) A gas is evolved or a precipitate forms.
+                    </div>
+                </li>
+                <!-- Question 5 -->
+                <li>
+                    When a reaction results in the formation of a new substance with properties different from the reactants, this is an example of:
+                    <ul>
+                        <li>A) Physical change</li>
+                        <li>B) Chemical change</li>
+                        <li>C) Phase change</li>
+                        <li>D) No change</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Chemical change
+                    </div>
+                </li>
+                <!-- Question 6 -->
+                <li>
+                    Which of the following best represents the oxidation half-reaction for the reaction between iron and oxygen?
+                    <ul>
+                        <li>A) O<sub>2</sub> + 4e<sup>-</sup> → 2O<sup>2-</sup></li>
+                        <li>B) Fe(s) → Fe<sup>2+</sup>(aq) + 2e<sup>-</sup></li>
+                        <li>C) Fe<sup>3+</sup>(aq) + e<sup>-</sup> → Fe<sup>2+</sup>(aq)</li>
+                        <li>D) 2Fe<sup>3+</sup>(aq) + 3O<sub>2</sub> → Fe<sub>2</sub>O<sub>3</sub>(s)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Fe(s) → Fe<sup>2+</sup>(aq) + 2e<sup>-</sup>
+                    </div>
+                </li>
+                <!-- Question 7 -->
+                <li>
+                    In the reaction between ammonia (NH<sub>3</sub>) and water, ammonia acts as:
+                    <ul>
+                        <li>A) A Brønsted-Lowry acid</li>
+                        <li>B) A Brønsted-Lowry base</li>
+                        <li>C) A Lewis acid</li>
+                        <li>D) A Lewis base</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) A Brønsted-Lowry base
+                    </div>
+                </li>
+                <!-- Question 8 -->
+                <li>
+                    Which species can act as both a conjugate acid and a conjugate base according to the Brønsted-Lowry theory?
+                    <ul>
+                        <li>A) H<sub>2</sub>O</li>
+                        <li>B) NH<sub>4</sub><sup>+</sup></li>
+                        <li>C) HCO<sub>3</sub><sup>-</sup></li>
+                        <li>D) OH<sup>-</sup></li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) HCO<sub>3</sub><sup>-</sup>
+                    </div>
+                </li>
+                <!-- Question 9 -->
+                <li>
+                    During the redox reaction between magnesium and hydrochloric acid, magnesium is:
+                    <ul>
+                        <li>A) Reduced</li>
+                        <li>B) Oxidized</li>
+                        <li>C) Neither oxidized nor reduced</li>
+                        <li>D) Both oxidized and reduced</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Oxidized
+                    </div>
+                </li>
+                <!-- Question 10 -->
+                <li>
+                    Which of the following is the correct balanced ionic equation for the reaction between sodium carbonate and calcium chloride?
+                    <ul>
+                        <li>A) Na<sup>+</sup>(aq) + CO<sub>3</sub><sup>2-</sup>(aq) + Ca<sup>2+</sup>(aq) + 2Cl<sup>-</sup>(aq) → CaCO<sub>3</sub>(s) + 2Na<sup>+</sup>(aq) + 2Cl<sup>-</sup>(aq)</li>
+                        <li>B) Na<sub>2</sub>CO<sub>3</sub>(aq) + CaCl<sub>2</sub>(aq) → CaCO<sub>3</sub>(s) + 2NaCl(aq)</li>
+                        <li>C) Ca<sup>2+</sup>(aq) + CO<sub>3</sub><sup>2-</sup>(aq) → CaCO<sub>3</sub>(s)</li>
+                        <li>D) 2Na<sup>+</sup>(aq) + CO<sub>3</sub><sup>2-</sup>(aq) + Ca<sup>2+</sup>(aq) + 2Cl<sup>-</sup>(aq) → CaCO<sub>3</sub>(s) + 2Na<sup>+</sup>(aq) + 2Cl<sup>-</sup>(aq)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) Ca<sup>2+</sup>(aq) + CO<sub>3</sub><sup>2-</sup>(aq) → CaCO<sub>3</sub>(s)
+                    </div>
+                </li>
+                <!-- Question 11 -->
+                <li>
+                    Which of the following is the complete ionic equation for the reaction between potassium nitrate and calcium hydroxide in aqueous solution?
+                    <ul>
+                        <li>A) 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) + Ca<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) → Ca(OH)<sub>2</sub>(s) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                        <li>B) KNO<sub>3</sub>(aq) + Ca(OH)<sub>2</sub>(aq) → Ca(NO<sub>3</sub>)<sub>2</sub>(aq) + 2KOH(aq)</li>
+                        <li>C) Ca<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) → Ca(OH)<sub>2</sub>(s)</li>
+                        <li>D) 2KOH(aq) + Ca(NO<sub>3</sub>)<sub>2</sub>(aq) → 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) + Ca(OH)<sub>2</sub>(s)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> A) 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) + Ca<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) → Ca(OH)<sub>2</sub>(s) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)
+                    </div>
+                </li>
+                <!-- Question 12 -->
+                <li>
+                    Which of the following is the correct net ionic equation for the reaction between potassium sulfate and magnesium nitrate in aqueous solution?
+                    <ul>
+                        <li>A) 2K<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Mg<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → MgSO<sub>4</sub>(aq) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                        <li>B) K<sub>2</sub>SO<sub>4</sub>(aq) + Mg(NO<sub>3</sub>)<sub>2</sub>(aq) → MgSO<sub>4</sub>(aq) + 2KNO<sub>3</sub>(aq)</li>
+                        <li>C) Mg<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) → MgSO<sub>4</sub>(aq)</li>
+                        <li>D) 2K<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Mg<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → MgSO<sub>4</sub>(aq) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) Mg<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) → MgSO<sub>4</sub>(aq)
+                    </div>
+                </li>
+                <!-- Question 13 -->
+                <li>
+                    During the neutralization of hydrochloric acid with sodium hydroxide, how many moles of sodium hydroxide are required to completely neutralize 1 mole of hydrochloric acid?
+                    <ul>
+                        <li>A) 0.5 moles</li>
+                        <li>B) 1 mole</li>
+                        <li>C) 2 moles</li>
+                        <li>D) 3 moles</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) 1 mole
+                    </div>
+                </li>
+                <!-- Question 14 -->
+                <li>
+                    In the reaction between hydrochloric acid and magnesium metal, which species is oxidized?
+                    <ul>
+                        <li>A) H<sup>+</sup></li>
+                        <li>B) Mg</li>
+                        <li>C) Cl<sup>-</sup></li>
+                        <li>D) H<sub>2</sub></li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Mg
+                    </div>
+                </li>
+                <!-- Question 15 -->
+                <li>
+                    What type of bond is formed when sodium donates an electron to chlorine?
+                    <ul>
+                        <li>A) Covalent bond</li>
+                        <li>B) Ionic bond</li>
+                        <li>C) Metallic bond</li>
+                        <li>D) Hydrogen bond</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Ionic bond
+                    </div>
+                </li>
+                <!-- Question 16 -->
+                <li>
+                    Which of the following is a characteristic of a strong electrolyte?
+                    <ul>
+                        <li>A) Does not conduct electricity.</li>
+                        <li>B) Partially dissociates in solution.</li>
+                        <li>C) Fully dissociates into ions in solution.</li>
+                        <li>D) Exists only in the solid state.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) Fully dissociates into ions in solution.
+                    </div>
+                </li>
+                <!-- Question 17 -->
+                <li>
+                    In a redox reaction, which of the following statements is true?
+                    <ul>
+                        <li>A) Oxidation and reduction occur simultaneously.</li>
+                        <li>B) Only one species is involved in electron transfer.</li>
+                        <li>C) The oxidation states of all elements remain unchanged.</li>
+                        <li>D) Energy is not transferred during the reaction.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> A) Oxidation and reduction occur simultaneously.
+                    </div>
+                </li>
+                <!-- Question 18 -->
+                <li>
+                    Which of the following pairs is a conjugate acid-base pair?
+                    <ul>
+                        <li>A) H<sub>2</sub>O and OH<sup>-</sup></li>
+                        <li>B) HCl and Cl<sup>-</sup></li>
+                        <li>C) NH<sub>3</sub> and NH<sub>4</sub><sup>+</sup></li>
+                        <li>D) All of the above</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> D) All of the above
+                    </div>
+                </li>
+                <!-- Question 19 -->
+                <li>
+                    What is the primary reason why ionic compounds generally have high melting and boiling points?
+                    <ul>
+                        <li>A) They form covalent bonds.</li>
+                        <li>B) They have strong electrostatic forces of attraction between ions.</li>
+                        <li>C) They are made of small molecules.</li>
+                        <li>D) They contain hydrogen bonds.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) They have strong electrostatic forces of attraction between ions.
+                    </div>
+                </li>
+                <!-- Question 20 -->
+                <li>
+                    During the reaction between hydrogen peroxide and potassium iodide, what role does potassium iodide play?
+                    <ul>
+                        <li>A) Reactant</li>
+                        <li>B) Catalyst</li>
+                        <li>C) Product</li>
+                        <li>D) Solvent</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) Catalyst
+                    </div>
+                </li>
+                <!-- Question 21 -->
+                <li>
+                    Which of the following best describes a catalyst in a chemical reaction?
+                    <ul>
+                        <li>A) It is consumed during the reaction.</li>
+                        <li>B) It increases the activation energy of the reaction.</li>
+                        <li>C) It provides an alternative pathway with lower activation energy.</li>
+                        <li>D) It shifts the equilibrium position of the reaction.</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) It provides an alternative pathway with lower activation energy.
+                    </div>
+                </li>
+                <!-- Question 22 -->
+                <li>
+                    Which of the following is the complete ionic equation for the reaction between sodium sulfate and barium nitrate in aqueous solution?
+                    <ul>
+                        <li>A) 2Na<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Ba<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → BaSO<sub>4</sub>(s) + 2Na<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                        <li>B) Na<sub>2</sub>SO<sub>4</sub>(aq) + Ba(NO<sub>3</sub>)<sub>2</sub>(aq) → BaSO<sub>4</sub>(s) + 2NaNO<sub>3</sub>(aq)</li>
+                        <li>C) Ba<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) → BaSO<sub>4</sub>(s)</li>
+                        <li>D) 2Na<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Ba<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → BaSO<sub>4</sub>(s) + 2Na<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> A) 2Na<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Ba<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → BaSO<sub>4</sub>(s) + 2Na<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)
+                    </div>
+                </li>
+                <!-- Question 23 -->
+                <li>
+                    Which of the following is the correct net ionic equation for the reaction between potassium sulfate and magnesium nitrate in aqueous solution?
+                    <ul>
+                        <li>A) 2K<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Mg<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → MgSO<sub>4</sub>(aq) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                        <li>B) K<sub>2</sub>SO<sub>4</sub>(aq) + Mg(NO<sub>3</sub>)<sub>2</sub>(aq) → MgSO<sub>4</sub>(aq) + 2KNO<sub>3</sub>(aq)</li>
+                        <li>C) Mg<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) → MgSO<sub>4</sub>(aq)</li>
+                        <li>D) 2K<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) + Mg<sup>2+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq) → MgSO<sub>4</sub>(aq) + 2K<sup>+</sup>(aq) + 2NO<sub>3</sub><sup>-</sup>(aq)</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> C) Mg<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) → MgSO<sub>4</sub>(aq)
+                    </div>
+                </li>
+                <!-- Question 24 -->
+                <li>
+                    During the neutralization of hydrochloric acid with sodium hydroxide, how many moles of sodium hydroxide are required to completely neutralize 1 mole of hydrochloric acid?
+                    <ul>
+                        <li>A) 0.5 moles</li>
+                        <li>B) 1 mole</li>
+                        <li>C) 2 moles</li>
+                        <li>D) 3 moles</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) 1 mole
+                    </div>
+                </li>
+                <!-- Question 25 -->
+                <li>
+                    In the reaction between ethanoic acid and ammonia, ethanoic acid acts as:
+                    <ul>
+                        <li>A) A Brønsted-Lowry base</li>
+                        <li>B) A Brønsted-Lowry acid</li>
+                        <li>C) A Lewis acid</li>
+                        <li>D) A Lewis base</li>
+                    </ul>
+                    <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+                    <div class="answer">
+                        <strong>Answer:</strong> B) A Brønsted-Lowry acid
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align:center; padding:25px 0; color:#777;">
+        <p>&copy; 2025 Mr. Gonzales. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Accordion Functionality with Dynamic max-height
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
+            const header = section.querySelector('h2');
+            const content = section.querySelector('.content');
+
+            header.addEventListener('click', () => {
+                section.classList.toggle('active');
+                if (section.classList.contains('active')) {
+                    // Set max-height to the scroll height of the content
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    // Reset max-height to 0
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        // Toggle Answer Visibility and Adjust Section max-height
+        function toggleAnswer(element) {
+            const answerDiv = element.nextElementSibling;
+            if (answerDiv.style.display === "block") {
+                answerDiv.style.display = "none";
+                element.textContent = "Show Answer";
+            } else {
+                answerDiv.style.display = "block";
+                element.textContent = "Hide Answer";
+            }
+
+            // Adjust the parent section's max-height
+            const section = element.closest('section');
+            const content = section.querySelector('.content');
+            // Temporarily set maxHeight to 'none' to get accurate scrollHeight
+            content.style.maxHeight = 'none';
+            const newMaxHeight = content.scrollHeight + "px";
+            content.style.maxHeight = newMaxHeight;
+        }
+    </script>
+</body>
+</html>
