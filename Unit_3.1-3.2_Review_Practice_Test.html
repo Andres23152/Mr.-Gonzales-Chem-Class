@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pre-AP Mole Concept Review</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-out;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      transition: background 0.3s, color 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    header h1:hover {
+      background: #66BB6A;
+      color: #fff;
+    }
+    header p {
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+    header p:hover {
+      color: #dff0d8;
+    }
+    /* Table of Contents */
+    .toc {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    .toc h2 {
+      margin-bottom: 15px;
+      color: #4CAF50;
+      font-size: 2em;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    .toc h2:hover {
+      color: #66BB6A;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .toc li {
+      margin: 12px 0;
+      transition: transform 0.3s;
+    }
+    .toc li:hover {
+      transform: translateX(10px);
+    }
+    .toc a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    .toc a:hover {
+      color: #4CAF50;
+    }
+    /* Sections */
+    section {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 1s forwards;
+      transition: background 0.3s;
+    }
+    section:hover {
+      background: #f9f9f9;
+    }
+    section h2 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 2em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    section h2:hover {
+      background: #66BB6A;
+      color: #fff;
+    }
+    /* Dropdown Content */
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+    section.active .content {
+      max-height: 3000px; /* Allows for tall content */
+    }
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 15px 0;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    .btn:hover {
+      background: #45a049;
+      transform: translateY(-3px);
+    }
+    /* Practice Test */
+    .practice-test {
+      background: #fff3cd;
+      padding: 25px 30px;
+      border-radius: 10px;
+      border: 2px solid #ffeeba;
+      animation: fadeIn 1.5s ease-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .practice-test h2 {
+      color: #856404;
+      margin-bottom: 20px;
+      font-size: 2em;
+      border-bottom: 2px solid #856404;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    .practice-test h2:hover {
+      color: #f0ad4e;
+    }
+    .practice-test ol {
+      list-style: decimal inside;
+    }
+    .practice-test li {
+      margin: 20px 0;
+      transition: background 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .practice-test li:hover {
+      background: #fff8e1;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Accordion Icons */
+    .toggle-icon {
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    section.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      .toc, section, .practice-test {
+        padding: 20px;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .practice-test li {
+        margin: 15px 0;
+      }
+    }
+    /* Practice Test Answers */
+    .answer {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      color: #155724;
+      transition: background 0.3s, color 0.3s;
+    }
+    .show-answer {
+      cursor: pointer;
+      color: #155724;
+      text-decoration: underline;
+      margin-left: 10px;
+      font-size: 0.95em;
+      transition: color 0.3s;
+    }
+    .show-answer:hover {
+      color: #0b2e13;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Pre-AP Mole Concept Review</h1>
+    <p>Build a solid foundation in mole calculations and conversions.</p>
+  </header>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#mole-review-outline">Mole Concept Outline</a></li>
+      <li><a href="#practice-test">Practice Test</a></li>
+    </ul>
+  </div>
+
+  <!-- Mole Review Outline Section -->
+  <section id="mole-review-outline">
+    <h2>Mole Concept Outline <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <h3>1. Basic Definitions</h3>
+      <ul>
+        <li><strong>Mole (n):</strong> 1 mole = (6.022 times 10^23) particles.</li>
+        <li><strong>Molar Mass (M):</strong> Mass in grams of 1 mole of a substance (g/mol).</li>
+      </ul>
+      <h3>2. Key Formulas</h3>
+      <ul>
+        <li>n = mass/molar mass</li>
+        <li>mass = n * molar mass</li>
+        <li># of particles = n * (6.022 x 10^23)</li>
+      </ul>
+      <p>Use these relationships to move between mass in grams, moles, and number of particles.</p>
+      <h3>3. Moles-Mass-Particles Diagram</h3>
+      <pre style="text-align:center;">
+           Mass (g)
+             / \
+            /   \
+    Molar Mass   Moles
+     (g/mol)     (mol)
+      </pre>
+      <p>Cover what you want to find, and the other two guide your formula.</p>
+    </div>
+  </section>
+
+  <!-- Practice Test Section -->
+  <section id="practice-test">
+    <h2>Practice Test <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content practice-test">
+      <h3>Answer the following 25 questions to test your understanding of the mole concept.</h3>
+      <ol>
+        <!-- Part A: Finding Molar Mass (Q1-5) -->
+        <li>
+          <strong>Calculate the molar mass of LiCl.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              Li: ~6.94 g/mol &emsp; Cl: ~35.45 g/mol <br/>
+              M(LiCl) = 6.94 + 35.45 = 42.39 g/mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>Calculate the molar mass of NH<sub>3</sub>.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              N: ~14.01 g/mol &emsp; H: ~1.01 g/mol <br/>
+              M(NH<sub>3</sub>) = 14.01 + 3(1.01) = 14.01 + 3.03 = 17.04 g/mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>Calculate the molar mass of Ca(NO<sub>3</sub>)<sub>2</sub>.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              Ca: 40.08 g/mol &emsp; N: 14.01 g/mol &emsp; O: 16.00 g/mol <br/>
+              M(Ca(NO<sub>3</sub>)<sub>2</sub>) = 40.08 + 2(14.01 + 3×16.00) <br/>
+              = 40.08 + 2(14.01 + 48.00) <br/>
+              = 40.08 + 2(62.01) <br/>
+              = 40.08 + 124.02 <br/>
+              = 164.10 g/mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>Calculate the molar mass of C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              C: 12.01 g/mol, H: 1.01 g/mol, O: 16.00 g/mol <br/>
+              M(C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) = 6(12.01) + 12(1.01) + 6(16.00) <br/>
+              = 72.06 + 12.12 + 96.00 <br/>
+              = 180.18 g/mol (approx.)
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>Calculate the molar mass of Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              Al: 26.98 g/mol, S: 32.06 g/mol, O: 16.00 g/mol <br/>
+              M(Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>) = 2(26.98) + 3[32.06 + (4×16.00)] <br/>
+              = 53.96 + 3(32.06 + 64.00) <br/>
+              = 53.96 + 3(96.06) <br/>
+              = 53.96 + 288.18 <br/>
+              = 342.14 g/mol
+            </p>
+          </div>
+        </li>
+
+        <!-- Part B: Mass -> Moles (Q6-10) -->
+        <li>
+          <strong>How many moles are in 25.0 g of NaCl?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(NaCl) ≈ 58.44 g/mol <br/>
+              n = mass / M = 25.0 g / 58.44 g/mol ≈ 0.428 mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>How many moles are in 50.0 g of CO<sub>2</sub>?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(CO<sub>2</sub>) ≈ 44.01 g/mol <br/>
+              n = 50.0 g / 44.01 g/mol ≈ 1.136 mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>How many moles are in 16.0 g of O<sub>2</sub>?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(O<sub>2</sub>) = 2 × 16.00 = 32.00 g/mol <br/>
+              n = 16.0 g / 32.00 g/mol = 0.50 mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A sample contains 145 g of KBr. How many moles of KBr are present?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(KBr) ≈ 119.0 g/mol (K ~39.10, Br ~79.90) <br/>
+              n = 145 g / 119.0 g/mol ≈ 1.22 mol
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A laboratory has 9.8 g of H<sub>2</sub>SO<sub>4</sub>. How many moles of sulfuric acid are in the sample?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(H<sub>2</sub>SO<sub>4</sub>) ≈ 98.09 g/mol <br/>
+              n = 9.8 g / 98.09 g/mol ≈ 0.10 mol
+            </p>
+          </div>
+        </li>
+
+        <!-- Part C: Moles -> Mass (Q11-15) -->
+        <li>
+          <strong>How many grams are in 0.75 mol of MgCl<sub>2</sub>?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(MgCl<sub>2</sub>) ≈ 95.21 g/mol (Mg ~24.31, Cl ~35.45 × 2) <br/>
+              mass = 0.75 mol × 95.21 g/mol ≈ 71.41 g
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>If you have 2.00 mol of Fe<sub>2</sub>O<sub>3</sub>, what is the mass in grams?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(Fe<sub>2</sub>O<sub>3</sub>) = 2(55.85) + 3(16.00) = 111.70 + 48.00 = 159.70 g/mol <br/>
+              mass = 2.00 mol × 159.70 g/mol = 319.4 g
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>You have 0.300 mol of glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>). What is the mass in grams?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) ≈ 180.18 g/mol <br/>
+              mass = 0.300 mol × 180.18 g/mol ≈ 54.05 g
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A container holds 2.5 moles of CaCO<sub>3</sub>. Calculate the mass in grams.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(CaCO<sub>3</sub>) = 40.08 + 12.01 + 3(16.00) = 40.08 + 12.01 + 48.00 = 100.09 g/mol <br/>
+              mass = 2.5 mol × 100.09 g/mol = 250.225 g ≈ 250.2 g
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>How many grams are in 0.0500 mol of CuSO<sub>4</sub>?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              M(CuSO<sub>4</sub>) = 63.55 + 32.06 + 4(16.00) = 63.55 + 32.06 + 64.00 = 159.61 g/mol <br/>
+              mass = 0.0500 mol × 159.61 g/mol = 7.98 g
+            </p>
+          </div>
+        </li>
+
+        <!-- Part D: Finding # of Particles (Q16-20) -->
+        <li>
+          <strong>How many molecules are in 3.0 moles of CO?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              # molecules = (3.0 mol) × (6.022 × 10<sup>23</sup>) <br/>
+              ≈ 1.81 × 10<sup>24</sup> molecules
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>How many formula units are in 0.25 mol of Na<sub>2</sub>SO<sub>4</sub>?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              # formula units = 0.25 mol × 6.022 × 10<sup>23</sup> <br/>
+              = 1.51 × 10<sup>23</sup> formula units
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>You have 2.4 moles of He. How many atoms of helium are there?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              # atoms = 2.4 mol × 6.022 × 10<sup>23</sup> <br/>
+              ≈ 1.45 × 10<sup>24</sup> atoms He
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>How many atoms of carbon are there in 0.40 mol of C?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              # atoms = 0.40 mol × 6.022 × 10<sup>23</sup> <br/>
+              ≈ 2.41 × 10<sup>23</sup> atoms C
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A sample contains 0.10 mol of H<sub>2</sub>O. How many molecules is this?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              # molecules = 0.10 mol × 6.022 × 10<sup>23</sup> <br/>
+              = 6.022 × 10<sup>22</sup> molecules H<sub>2</sub>O
+            </p>
+          </div>
+        </li>
+
+        <!-- Part E: Five Challenge Questions (Q21-25) -->
+        <li>
+          <strong>A sample of Al foil weighs 5.40 g.</strong><br/>
+          (a) Calculate the number of moles of Al in the sample. <br/>
+          (b) How many atoms of Al would that be?
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              (a) M(Al) ≈ 26.98 g/mol <br/>
+              n = 5.40 g / 26.98 g/mol ≈ 0.200 mol <br/><br/>
+              (b) Atoms = 0.200 mol × 6.022 × 10<sup>23</sup> ≈ 1.20 × 10<sup>23</sup> atoms
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A container holds 2.00 × 10<sup>24</sup> molecules of N<sub>2</sub>.</strong><br/>
+          (a) How many moles of N<sub>2</sub> is this?<br/>
+          (b) What is the mass of this sample of N<sub>2</sub>?
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              (a) n = (2.00 × 10<sup>24</sup>) / (6.022 × 10<sup>23</sup>) ≈ 3.32 mol <br/>
+              (b) M(N<sub>2</sub>) = 28.02 g/mol <br/>
+              mass = 3.32 mol × 28.02 g/mol ≈ 92.9 g
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A sealed tank contains 1.5 moles of Ne gas at 25°C and 2.0 atm. A second sealed tank contains 1.5 moles of Kr gas at 25°C and 2.0 atm. Which tank has the greater density and why?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              Both tanks have the same moles, T, and P, thus the same V (from ideal gas law).
+              However, <em>Kr has a higher molar mass</em> than Ne, so the same number
+              of moles of Kr will have a greater mass in the same volume.
+              Therefore, the <strong>Kr tank</strong> has the greater density.
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>You have 13 g of N<sub>2</sub>, 27 g of Al, and 16 g of CH<sub>4</sub>. Rank these from least to greatest in terms of (a) moles and (b) total atoms.</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              (a) Moles: <br/>
+              - N<sub>2</sub> has M ≈ 28 g/mol ⇒ 13 g / 28 g/mol ≈ 0.46 mol <br/>
+              - Al has M ≈ 26.98 g/mol ⇒ 27 g / 26.98 g/mol ≈ 1.00 mol <br/>
+              - CH<sub>4</sub> has M ≈ 16.04 g/mol ⇒ 16 g / 16.04 g/mol ≈ 1.0 mol <br/>
+              Order (least→greatest): N<sub>2</sub> (0.46 mol) &lt; Al (1.0 mol) ≈ CH<sub>4</sub> (1.0 mol) <br/><br/>
+              (b) Total Atoms: <br/>
+              For each substance: <br/>
+              - N<sub>2</sub>: 0.46 mol × (6.022 × 10<sup>23</sup> molecules/mol) × (2 atoms/molecule) <br/>
+                ≈ 0.46 × 2.77 × 10<sup>24</sup> = 1.27 × 10<sup>24</sup> atoms <br/>
+              - Al: 1.0 mol × (6.022 × 10<sup>23</sup> atoms/mol) <br/>
+                = 6.022 × 10<sup>23</sup> atoms <br/>
+              - CH<sub>4</sub>: 1.0 mol × (6.022 × 10<sup>23</sup> molecules/mol) × (5 atoms/molecule) <br/>
+                = 3.01 × 10<sup>24</sup> atoms <br/>
+              So, total atoms (least→greatest): Al &lt; N<sub>2</sub> &lt; CH<sub>4</sub>.
+            </p>
+          </div>
+        </li>
+        <li>
+          <strong>A cell contains 5.00 × 10<sup>15</sup> molecules of a fatty acid (molar mass = 750 g/mol). (a) How many moles is this? (b) What is the mass in grams?</strong>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <p>
+              (a) n = (5.00 × 10<sup>15</sup>) / (6.022 × 10<sup>23</sup>) ≈ 8.30 × 10<sup>-9</sup> mol <br/>
+              (b) mass = n × 750 g/mol ≈ 8.30 × 10<sup>-9</sup> mol × 750 g/mol <br/>
+              ≈ 6.23 × 10<sup>-6</sup> g
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="text-align:center; padding:25px 0; color:#777;">
+    <p>&copy; 2025 Mr. Gonzales.</p>
+  </footer>
+
+  <!-- JavaScript for Accordion & Answer Toggles -->
+  <script>
+    // Accordion Functionality with Dynamic max-height
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const header = section.querySelector('h2');
+      const content = section.querySelector('.content');
+      header.addEventListener('click', () => {
+        // Only toggle when clicking the header, not its children
+        if (event.target === header || event.target.classList.contains('toggle-icon')) {
+          section.classList.toggle('active');
+          if (section.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            content.style.maxHeight = null;
+          }
+        }
+      });
+    });
+
+    // Toggle Answer Visibility and Adjust Section max-height
+    function toggleAnswer(element) {
+      const answerDiv = element.nextElementSibling;
+      if (answerDiv.style.display === "block") {
+        answerDiv.style.display = "none";
+        element.textContent = "Show Answer";
+      } else {
+        answerDiv.style.display = "block";
+        element.textContent = "Hide Answer";
+      }
+      // Recalculate the parent section's max-height after toggling
+      const section = element.closest('section');
+      const content = section.querySelector('.content');
+      content.style.maxHeight = 'none';
+      const newMaxHeight = content.scrollHeight + "px";
+      content.style.maxHeight = newMaxHeight;
+    }
+  </script>
+</body>
+</html>
