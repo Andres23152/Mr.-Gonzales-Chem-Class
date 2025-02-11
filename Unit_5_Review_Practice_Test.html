@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Gonzales AP Chem Kinetics Review</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #b3e5fc); /* light blue gradient */
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: #2196F3; /* blue */
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-out;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      transition: background 0.3s, color 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    header h1:hover {
+      background: #64B5F6;
+      color: #fff;
+    }
+    
+    header p {
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+    
+    header p:hover {
+      color: #bbdefb;
+    }
+    
+    /* Table of Contents */
+    .toc {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    
+    .toc h2 {
+      margin-bottom: 15px;
+      color: #2196F3;
+      font-size: 2em;
+      border-bottom: 2px solid #2196F3;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    
+    .toc h2:hover {
+      color: #64B5F6;
+    }
+    
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .toc li {
+      margin: 12px 0;
+      transition: transform 0.3s;
+    }
+    
+    .toc li:hover {
+      transform: translateX(10px);
+    }
+    
+    .toc a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    
+    .toc a:hover {
+      color: #2196F3;
+    }
+    
+    /* Sections */
+    section {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 1s forwards;
+      transition: background 0.3s;
+    }
+    
+    section:hover {
+      background: #f5f5f5;
+    }
+    
+    section h2 {
+      color: #2196F3;
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 2em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    section h2:hover {
+      background: #64B5F6;
+      color: #fff;
+    }
+    
+    /* Dropdown Content */
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+    
+    section.active .content {
+      max-height: 3000px; /* Increased to accommodate content */
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 15px 0;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    
+    .btn:hover {
+      background: #1976D2;
+      transform: translateY(-3px);
+    }
+    
+    /* Practice Test */
+    .practice-test {
+      background: #e3f2fd;
+      padding: 25px 30px;
+      border-radius: 10px;
+      border: 2px solid #90caf9;
+      animation: fadeIn 1.5s ease-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .practice-test h2 {
+      color: #0d47a1;
+      margin-bottom: 20px;
+      font-size: 2em;
+      border-bottom: 2px solid #0d47a1;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    
+    .practice-test h2:hover {
+      color: #1976D2;
+    }
+    
+    .practice-test ol {
+      list-style: decimal inside;
+    }
+    
+    .practice-test li {
+      margin: 20px 0;
+      transition: background 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    .practice-test li:hover {
+      background: #f0f4c3;
+    }
+    
+    /* Answer Section */
+    .answer {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #bbdefb;
+      border: 1px solid #90caf9;
+      border-radius: 5px;
+      color: #0d47a1;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    .show-answer {
+      cursor: pointer;
+      color: #0d47a1;
+      text-decoration: underline;
+      margin-left: 10px;
+      font-size: 0.95em;
+      transition: color 0.3s;
+    }
+    
+    .show-answer:hover {
+      color: #002171;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Accordion Icons */
+    .toggle-icon {
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    
+    section.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      
+      .toc, section, .practice-test {
+        padding: 20px;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .practice-test li {
+        margin: 15px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Mr. Gonzales AP Chem Kinetics Review</h1>
+    <p>Practice and review key concepts in chemical kinetics.</p>
+  </header>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#practice-test">Practice Test</a></li>
+    </ul>
+  </div>
+
+  <!-- Practice Test Section -->
+  <section id="practice-test">
+    <h2>Practice Test <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content practice-test">
+      <h3>Answer the following questions to test your understanding:</h3>
+      <ol>
+        <!-- Question 1 -->
+        <li>
+          <p>Consider the gas‐phase reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;2 A(g) + B(g) → AB₂(g)</p>
+          <p>The following experimental data were obtained:</p>
+          <p>
+            Experiment&nbsp;&nbsp;&nbsp; [A] (M)&nbsp;&nbsp;&nbsp; [B] (M)&nbsp;&nbsp;&nbsp; Initial Rate (M/s)<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&times;10<sup>-3</sup><br>
+            2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.0&times;10<sup>-3</sup><br>
+            3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.0&times;10<sup>-3</sup>
+          </p>
+          <p>Which rate law is consistent with these data?</p>
+          <ul>
+            <li>(A) Rate = k[A][B]</li>
+            <li>(B) Rate = k[A]²[B]</li>
+            <li>(C) Rate = k[A][B]²</li>
+            <li>(D) Rate = k[A]²[B]²</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[A]²[B]<br>
+            <strong>Explanation:</strong> Comparing Experiments 1 and 2, doubling [A] (with [B] constant) quadruples the rate, indicating second order in A. Comparing Experiments 2 and 3, doubling [B] (with [A] constant) doubles the rate, indicating first order in B.
+          </div>
+        </li>
+        
+        <!-- Question 2 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;X(g) + Y₂(g) → XY₂(g)<br>
+             a chemist determines that the rate law is: Rate = k[X][Y₂].</p>
+          <p>In a separate experiment, a catalyst Z is added while the concentrations of X and Y₂ are held constant, and the rate increases significantly. Which explanation best accounts for the increased rate?</p>
+          <ul>
+            <li>(A) The catalyst increases the frequency of collisions by increasing the reactant concentrations.</li>
+            <li>(B) The catalyst provides an alternative pathway with a lower activation energy.</li>
+            <li>(C) The catalyst increases the concentration of Y₂ in the reaction mixture.</li>
+            <li>(D) The catalyst raises the temperature of the system.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) The catalyst provides an alternative pathway with a lower activation energy.<br>
+            <strong>Explanation:</strong> Catalysts speed up reactions by lowering the activation energy through an alternative pathway without changing the reactant concentrations or the overall rate law.
+          </div>
+        </li>
+        
+        <!-- Question 3 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;2 D(g) → D₂(g)</p>
+          <p>If the measured initial rate of formation of D₂ is 0.050 M/s, what is the corresponding rate of disappearance of D?</p>
+          <ul>
+            <li>(A) 0.025 M/s</li>
+            <li>(B) 0.050 M/s</li>
+            <li>(C) 0.075 M/s</li>
+            <li>(D) 0.100 M/s</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (D) 0.100 M/s<br>
+            <strong>Explanation:</strong> According to the stoichiometry, 2 moles of D are consumed for every 1 mole of D₂ produced. Therefore, the rate of disappearance of D is 2 &times; 0.050 M/s = 0.100 M/s.
+          </div>
+        </li>
+        
+        <!-- Question 4 -->
+        <li>
+          <p>A reaction involving reactant E(g) is studied. The following plots are obtained:</p>
+          <ul>
+            <li>[E] vs. time: curved</li>
+            <li>ln[E] vs. time: linear</li>
+            <li>1/[E] vs. time: curved</li>
+          </ul>
+          <p>What is the order of the reaction with respect to E?</p>
+          <ul>
+            <li>(A) Zeroth order</li>
+            <li>(B) First order</li>
+            <li>(C) Second order</li>
+            <li>(D) Third order</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) First order<br>
+            <strong>Explanation:</strong> A linear plot of ln[E] versus time indicates first-order kinetics with respect to E.
+          </div>
+        </li>
+        
+        <!-- Question 5 -->
+        <li>
+          <p>The formation of HI from H₂ and I₂ is proposed to follow the mechanism:</p>
+          <p>
+            Step 1 (fast equilibrium): I₂ ⇌ 2 I<br>
+            Step 2 (slow): H₂ + I → HI + H<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H + I → HI
+          </p>
+          <p>By combining steps, the overall reaction is: H₂ + I₂ → 2 HI.<br>
+          Using the first two steps (with the slow step determining the rate), which of the following is the rate law (expressed in terms of [H₂] and [I₂])?</p>
+          <ul>
+            <li>(A) Rate = k[H₂][I₂]</li>
+            <li>(B) Rate = k[H₂][I₂]<sup>1/2</sup></li>
+            <li>(C) Rate = k[H₂][I₂]²</li>
+            <li>(D) Rate = k[H₂]<sup>1/2</sup>[I₂]</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[H₂][I₂]<sup>1/2</sup><br>
+            <strong>Explanation:</strong> The slow step gives Rate = k₂[H₂][I]. From the fast equilibrium, K = [I]²/[I₂] so that [I] = (K[I₂])<sup>1/2</sup>. Substituting yields Rate = k' [H₂][I₂]<sup>1/2</sup>.
+          </div>
+        </li>
+        
+        <!-- Question 6 -->
+        <li>
+          <p>Consider the mechanism for the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;J + 2 K → JK₂<br>
+             proposed to occur by:</p>
+          <p>
+            Step 1 (slow): J + K → JK<br>
+            Step 2 (fast): JK + K → JK₂
+          </p>
+          <p>What is the overall rate law for the reaction?</p>
+          <ul>
+            <li>(A) Rate = k[J][K]²</li>
+            <li>(B) Rate = k[J][K]</li>
+            <li>(C) Rate = k[J]²[K]</li>
+            <li>(D) Rate = k[J]²[K]²</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[J][K]<br>
+            <strong>Explanation:</strong> Since the slow (rate-determining) step is J + K → JK, the rate law is given by Rate = k₁[J][K]. The fast step does not affect the overall rate law.
+          </div>
+        </li>
+        
+        <!-- Question 7 -->
+        <li>
+          <p>A reaction involving L(g) is found to have a linear plot of 1/[L] versus time. What is the order of the reaction with respect to L, and how does the half-life (t<sub>1/2</sub>) depend on the initial concentration [L]<sub>0</sub>?</p>
+          <ul>
+            <li>(A) First order; t<sub>1/2</sub> is independent of [L]<sub>0</sub>.</li>
+            <li>(B) Second order; t<sub>1/2</sub> ∝ 1/[L]<sub>0</sub>.</li>
+            <li>(C) Zeroth order; t<sub>1/2</sub> ∝ [L]<sub>0</sub>.</li>
+            <li>(D) Second order; t<sub>1/2</sub> is independent of [L]<sub>0</sub>.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Second order; t<sub>1/2</sub> ∝ 1/[L]<sub>0</sub>.<br>
+            <strong>Explanation:</strong> A linear plot of 1/[L] versus time is characteristic of a second-order reaction, for which the half-life is given by t<sub>1/2</sub> = 1/(k[L]<sub>0</sub>).
+          </div>
+        </li>
+        
+        <!-- Question 8 -->
+        <li>
+          <p>The reaction 2 NO(g) + O₂(g) → 2 NO₂(g) is proposed to occur via the following mechanism:</p>
+          <p>
+            Step 1 (slow): NO + O₂ → NO₃ (intermediate)<br>
+            Step 2 (fast): NO₃ + NO → 2 NO₂
+          </p>
+          <p>Which rate law is consistent with this mechanism?</p>
+          <ul>
+            <li>(A) Rate = k[NO]²[O₂]</li>
+            <li>(B) Rate = k[NO][O₂]</li>
+            <li>(C) Rate = k[NO₃][NO]</li>
+            <li>(D) Rate = k[NO][NO₂]</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[NO][O₂]<br>
+            <strong>Explanation:</strong> Because the slow, rate-determining step is NO + O₂ → NO₃, the rate law is directly determined by its stoichiometry: Rate = k[NO][O₂]. The intermediate NO₃ is not included in the overall rate law.
+          </div>
+        </li>
+        
+        <!-- Question 9 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;P(g) + Q(g) → R(g)</p>
+          <p>Experiments show that doubling [P] doubles the rate while doubling [Q] increases the rate by a factor of four. What is the experimental rate law?</p>
+          <ul>
+            <li>(A) Rate = k[P][Q]</li>
+            <li>(B) Rate = k[P][Q]²</li>
+            <li>(C) Rate = k[P]²[Q]</li>
+            <li>(D) Rate = k[P]²[Q]²</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[P][Q]²<br>
+            <strong>Explanation:</strong> Doubling [P] (first-order) doubles the rate and doubling [Q] (second-order) quadruples the rate, resulting in Rate = k[P][Q]².
+          </div>
+        </li>
+        
+        <!-- Question 10 -->
+        <li>
+          <p>In the heterogeneous reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;S(s) + T(aq) → ST(aq)</p>
+          <p>Two trials are performed. In Trial 1, a large chunk of S is used; in Trial 2, S is used in powdered form. Which trial will have the faster reaction rate, and why?</p>
+          <ul>
+            <li>(A) Trial 1, because the larger piece of S has greater mass.</li>
+            <li>(B) Trial 2, because powdered S has a greater surface area for reaction.</li>
+            <li>(C) Trial 1, because the concentration of S is higher.</li>
+            <li>(D) Trial 2, because the powdered form increases the concentration of T.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Trial 2, because powdered S has a greater surface area for reaction.<br>
+            <strong>Explanation:</strong> Powdering a solid increases its surface area, allowing more reactant–solution contact and leading to an increased reaction rate.
+          </div>
+        </li>
+        
+        <!-- Question 11 -->
+        <li>
+          <p>A reaction is found to be zero order in reactant U. Which statement best describes the effect of [U] on the rate?</p>
+          <ul>
+            <li>(A) Doubling [U] doubles the rate.</li>
+            <li>(B) Doubling [U] quadruples the rate.</li>
+            <li>(C) The rate is independent of [U].</li>
+            <li>(D) The rate decreases as [U] increases.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (C) The rate is independent of [U].<br>
+            <strong>Explanation:</strong> In a zero-order reaction the rate does not depend on the concentration of the reactant.
+          </div>
+        </li>
+        
+        <!-- Question 12 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;2 X(g) → X₂(g)</p>
+          <p>If the rate of formation of X₂ is 0.080 M/s, what is the rate of disappearance of X?</p>
+          <ul>
+            <li>(A) 0.040 M/s</li>
+            <li>(B) 0.080 M/s</li>
+            <li>(C) 0.120 M/s</li>
+            <li>(D) 0.160 M/s</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (D) 0.160 M/s<br>
+            <strong>Explanation:</strong> Since 2 moles of X produce 1 mole of X₂, the rate of X disappearance is 2 &times; 0.080 M/s = 0.160 M/s.
+          </div>
+        </li>
+        
+        <!-- Question 13 -->
+        <li>
+          <p>Which of the following best describes the effect of a catalyst on the reaction energy profile?</p>
+          <ul>
+            <li>(A) It increases the activation energy, slowing the reaction.</li>
+            <li>(B) It provides an alternative pathway with a lower activation energy.</li>
+            <li>(C) It changes the overall free energy change (ΔG) of the reaction.</li>
+            <li>(D) It increases the energy of the reactants.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) It provides an alternative pathway with a lower activation energy.<br>
+            <strong>Explanation:</strong> Catalysts lower the activation energy by offering an alternative reaction pathway while leaving the overall thermodynamics (ΔG) unchanged.
+          </div>
+        </li>
+        
+        <!-- Question 14 -->
+        <li>
+          <p>The overall reaction for the decomposition of compound Y is:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;2 Y → Products</p>
+          <p>Experimental studies show that the reaction is first order in Y. Which mechanism is most consistent with this observation?</p>
+          <ul>
+            <li>(A) A bimolecular collision between two Y molecules in the rate‐determining step.</li>
+            <li>(B) A unimolecular decomposition of Y in the slow step.</li>
+            <li>(C) A catalyst–mediated reaction where Y reacts with the catalyst.</li>
+            <li>(D) A simultaneous collision of two Y molecules in a fast step.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) A unimolecular decomposition of Y in the slow step.<br>
+            <strong>Explanation:</strong> Even though the overall stoichiometry involves two Y molecules, first-order kinetics implies that the slow, rate-determining step involves only one Y molecule (a unimolecular process).
+          </div>
+        </li>
+        
+        <!-- Question 15 -->
+        <li>
+          <p>The synthesis of phosgene (COCl₂) is proposed to occur via the mechanism below:</p>
+          <p>
+            Step 1 (fast equilibrium): Cl₂ ⇌ 2 Cl<br>
+            Step 2 (slow): CO + Cl → COCl₂
+          </p>
+          <p>Expressed in terms of [CO] and [Cl₂], which rate law is consistent with this mechanism?</p>
+          <ul>
+            <li>(A) Rate = k[CO][Cl₂]</li>
+            <li>(B) Rate = k[CO][Cl₂]<sup>1/2</sup></li>
+            <li>(C) Rate = k[CO]²[Cl₂]</li>
+            <li>(D) Rate = k[CO][Cl₂]²</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[CO][Cl₂]<sup>1/2</sup><br>
+            <strong>Explanation:</strong> From the fast equilibrium, [Cl] ∝ [Cl₂]<sup>1/2</sup>. The slow step gives Rate = k₂[CO][Cl]; substituting for [Cl] yields Rate = k' [CO][Cl₂]<sup>1/2</sup>.
+          </div>
+        </li>
+        
+        <!-- Question 16 -->
+        <li>
+          <p>For a second-order reaction involving reactant D, the half-life (t<sub>1/2</sub>) is given by which expression?</p>
+          <ul>
+            <li>(A) t<sub>1/2</sub> = 0.693/k</li>
+            <li>(B) t<sub>1/2</sub> = 1/(k[D]<sub>0</sub>)</li>
+            <li>(C) t<sub>1/2</sub> = k[D]<sub>0</sub></li>
+            <li>(D) t<sub>1/2</sub> = 1/(2k[D]<sub>0</sub>)</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) t<sub>1/2</sub> = 1/(k[D]<sub>0</sub>)<br>
+            <strong>Explanation:</strong> For a second-order reaction, the half-life depends on the initial concentration and is given by t<sub>1/2</sub> = 1/(k[D]<sub>0</sub>).
+          </div>
+        </li>
+        
+        <!-- Question 17 -->
+        <li>
+          <p>A first-order reaction has a measured half-life of 6.93 seconds. What is the rate constant k?</p>
+          <ul>
+            <li>(A) 0.10 s<sup>-1</sup></li>
+            <li>(B) 0.05 s<sup>-1</sup></li>
+            <li>(C) 0.15 s<sup>-1</sup></li>
+            <li>(D) 0.01 s<sup>-1</sup></li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (A) 0.10 s<sup>-1</sup><br>
+            <strong>Explanation:</strong> For a first-order reaction, t<sub>1/2</sub> = ln 2/k. Thus, k = ln 2/6.93 s ≈ 0.693/6.93 s ≈ 0.10 s<sup>-1</sup>.
+          </div>
+        </li>
+        
+        <!-- Question 18 -->
+        <li>
+          <p>Consider the mechanism for the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;A + B → C<br>
+             proposed to occur by:</p>
+          <p>
+            Step 1 (slow): A → I (intermediate)<br>
+            Step 2 (fast): I + B → C
+          </p>
+          <p>Why does the intermediate I not appear in the overall rate law?</p>
+          <ul>
+            <li>(A) I is present in very high concentration.</li>
+            <li>(B) I is consumed only in the slow step.</li>
+            <li>(C) I’s concentration is determined by a fast equilibrium and can be expressed in terms of A.</li>
+            <li>(D) I is a catalyst in the reaction.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (C) I’s concentration is determined by a fast equilibrium and can be expressed in terms of A.<br>
+            <strong>Explanation:</strong> Intermediates are not included in the final rate law because they are eliminated by expressing their concentration in terms of the stable reactants using equilibrium relationships from fast steps.
+          </div>
+        </li>
+        
+        <!-- Question 19 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;L(g) + M(g) → LM(g)<br>
+             which is catalyzed by substance X (which is not consumed), which statement is true regarding the catalyst X?</p>
+          <ul>
+            <li>(A) X increases the equilibrium constant of the reaction.</li>
+            <li>(B) X is consumed during the reaction and then regenerated.</li>
+            <li>(C) X increases the activation energy of the reaction.</li>
+            <li>(D) X appears as a reactant in the overall rate law.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) X is consumed during the reaction and then regenerated.<br>
+            <strong>Explanation:</strong> A catalyst participates in the reaction mechanism but is regenerated by the end; it lowers the activation energy without affecting the overall equilibrium constant or appearing in the net rate law.
+          </div>
+        </li>
+        
+        <!-- Question 20 -->
+        <li>
+          <p>An increase in temperature from 300 K to 310 K is observed to double the rate of a particular reaction. Which explanation best accounts for this observation?</p>
+          <ul>
+            <li>(A) The increased temperature raises the concentration of the reactants.</li>
+            <li>(B) The increased temperature results in a larger fraction of molecules exceeding the activation energy.</li>
+            <li>(C) The increased temperature decreases the frequency of collisions.</li>
+            <li>(D) The increased temperature increases the equilibrium constant significantly.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) The increased temperature results in a larger fraction of molecules exceeding the activation energy.<br>
+            <strong>Explanation:</strong> Higher temperatures increase the number of molecules with energy equal to or greater than the activation energy, which increases the rate constant according to the Arrhenius equation.
+          </div>
+        </li>
+        
+        <!-- Question 21 -->
+        <li>
+          <p>In a heterogeneous catalytic reaction on a solid surface, the catalyst becomes saturated with reactant. Under these conditions, what is most likely true about the reaction rate?</p>
+          <ul>
+            <li>(A) It is directly proportional to the reactant concentration.</li>
+            <li>(B) It becomes independent of the reactant concentration (zero order).</li>
+            <li>(C) It increases exponentially with the reactant concentration.</li>
+            <li>(D) It is inversely proportional to the reactant concentration.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) It becomes independent of the reactant concentration (zero order).<br>
+            <strong>Explanation:</strong> When the surface is saturated (all active sites are occupied), further increases in reactant concentration do not affect the rate, resulting in zero-order kinetics.
+          </div>
+        </li>
+        
+        <!-- Question 22 -->
+        <li>
+          <p>The dissociation of diatomic molecule A₂ into atoms A is proposed to occur by a unimolecular process:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;A₂ → 2 A</p>
+          <p>Which rate law is consistent with a unimolecular (first-order) mechanism?</p>
+          <ul>
+            <li>(A) Rate = k[A₂]</li>
+            <li>(B) Rate = k[A₂]²</li>
+            <li>(C) Rate = k[A]</li>
+            <li>(D) Rate = k√[A₂]</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (A) Rate = k[A₂]<br>
+            <strong>Explanation:</strong> A unimolecular dissociation is first order with respect to the reactant, so the rate law is Rate = k[A₂], regardless of the fact that two atoms are produced.
+          </div>
+        </li>
+        
+        <!-- Question 23 -->
+        <li>
+          <p>For the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;2 X(g) + Y(g) → XY₂(g)</p>
+          <p>A mechanism is proposed as follows:</p>
+          <p>
+            Step 1 (fast equilibrium): X + Y → XY (intermediate)<br>
+            Step 2 (slow): XY + X → XY₂
+          </p>
+          <p>What is the overall rate law?</p>
+          <ul>
+            <li>(A) Rate = k[X][Y]</li>
+            <li>(B) Rate = k[X]²[Y]</li>
+            <li>(C) Rate = k[X]²[Y]²</li>
+            <li>(D) Rate = k[X][Y]²</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[X]²[Y]<br>
+            <strong>Explanation:</strong> The slow step has rate = k₂[XY][X]. From the fast equilibrium, [XY] ∝ [X][Y]. Substituting gives Rate = k[X]²[Y].
+          </div>
+        </li>
+        
+        <!-- Question 24 -->
+        <li>
+          <p>In the reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;A + B → C</p>
+          <p>It is observed that doubling [A] while halving [B] produces no net change in the rate. If the rate law is written as Rate = k[A]<sup>m</sup>[B]<sup>n</sup>, what must be the relationship between m and n?</p>
+          <ul>
+            <li>(A) m = n</li>
+            <li>(B) m = 2n</li>
+            <li>(C) n = 2m</li>
+            <li>(D) m = 0</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (A) m = n<br>
+            <strong>Explanation:</strong> Doubling [A] increases the rate by 2<sup>m</sup>; halving [B] decreases the rate by 2<sup>n</sup>. For the overall rate to remain unchanged, 2<sup>m</sup> &times; (1/2)<sup>n</sup> = 1, so m = n.
+          </div>
+        </li>
+        
+        <!-- Question 25 -->
+        <li>
+          <p>Studies of the reaction 2 M → N reveal that doubling the concentration of M increases the rate by a factor of 4. Which rate law is consistent with this observation?</p>
+          <ul>
+            <li>(A) Rate = k[M]</li>
+            <li>(B) Rate = k[M]²</li>
+            <li>(C) Rate = k[M]<sup>1/2</sup></li>
+            <li>(D) Rate = k[M]³</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) Rate = k[M]²<br>
+            <strong>Explanation:</strong> A doubling of [M] leading to a fourfold (2²) increase in rate is characteristic of a second-order reaction in M.
+          </div>
+        </li>
+        
+        <!-- Question 26 -->
+        <li>
+          <p>In the decomposition of ozone (O₃) on a catalyst, it is observed that the activation energy is significantly lower than in the uncatalyzed reaction, while the overall thermodynamic parameters (ΔH, ΔG) remain unchanged. Which statement best describes the role of the catalyst?</p>
+          <ul>
+            <li>(A) It increases the concentration of O₃.</li>
+            <li>(B) It provides an alternative pathway with a lower activation energy.</li>
+            <li>(C) It is consumed during the reaction.</li>
+            <li>(D) It increases the equilibrium constant of the reaction.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (B) It provides an alternative pathway with a lower activation energy.<br>
+            <strong>Explanation:</strong> A catalyst lowers the activation energy by providing an alternative mechanism, thereby increasing the reaction rate without affecting the overall thermodynamics.
+          </div>
+        </li>
+        
+        <!-- Question 27 -->
+        <li>
+          <p>Consider the unimolecular reaction:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;D → F<br>
+             which is proposed to occur by the mechanism:</p>
+          <p>
+            Step 1 (fast equilibrium): D ⇌ E (intermediate)<br>
+            Step 2 (slow): E → F
+          </p>
+          <p>What is the overall rate law, and why does it reflect the observed kinetics?</p>
+          <ul>
+            <li>(A) Rate = k[D]², because two D molecules are involved.</li>
+            <li>(B) Rate = k[E], but E is not observed.</li>
+            <li>(C) Rate = k[D], because the slow step (E → F) is rate determining and [E] is proportional to [D].</li>
+            <li>(D) Rate = k, because the reaction is zero order.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> (C) Rate = k[D], because the slow step (E → F) is rate determining and [E] is proportional to [D].<br>
+            <strong>Explanation:</strong> Even though an intermediate E is formed, the slow (rate-determining) step converts E to F. Since E is in equilibrium with D, its concentration is proportional to [D], yielding a first-order overall rate law: Rate = k[D].
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="text-align:center; padding:25px 0; color:#777;">
+    <p>&copy; 2025 Mr. Gonzales.</p>
+  </footer>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Accordion Functionality with Dynamic max-height
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const header = section.querySelector('h2');
+      const content = section.querySelector('.content');
+      header.addEventListener('click', () => {
+        section.classList.toggle('active');
+        if (section.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Toggle Answer Visibility and Adjust Section max-height
+    function toggleAnswer(element) {
+      const answerDiv = element.nextElementSibling;
+      if (answerDiv.style.display === "block") {
+        answerDiv.style.display = "none";
+        element.textContent = "Show Answer";
+      } else {
+        answerDiv.style.display = "block";
+        element.textContent = "Hide Answer";
+      }
+      const section = element.closest('section');
+      const content = section.querySelector('.content');
+      content.style.maxHeight = 'none';
+      const newMaxHeight = content.scrollHeight + "px";
+      content.style.maxHeight = newMaxHeight;
+    }
+  </script>
+</body>
+</html>
