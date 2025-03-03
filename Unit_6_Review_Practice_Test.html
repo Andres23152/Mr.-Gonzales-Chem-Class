@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mr. Gonzales Unit 6 Chem Review</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: #ff69b4;
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-out;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      transition: background 0.3s, color 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    header h1:hover {
+      background: #ff85c0;
+      color: #fff;
+    }
+    header p {
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+    header p:hover {
+      color: #fce4ec;
+    }
+    /* Table of Contents */
+    .toc {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    .toc h2 {
+      margin-bottom: 15px;
+      color: #ff69b4;
+      font-size: 2em;
+      border-bottom: 2px solid #ff69b4;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    .toc h2:hover {
+      color: #ff85c0;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .toc li {
+      margin: 12px 0;
+      transition: transform 0.3s;
+    }
+    .toc li:hover {
+      transform: translateX(10px);
+    }
+    .toc a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    .toc a:hover {
+      color: #ff69b4;
+    }
+    /* Sections */
+    section {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 1s forwards;
+      transition: background 0.3s;
+    }
+    section:hover {
+      background: #fff0f5;
+    }
+    section h2 {
+      color: #ff69b4;
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 2em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    section h2:hover {
+      background: #ff85c0;
+      color: #fff;
+    }
+    /* Subsection Headers (for Review) */
+    section h3 {
+      color: #d81b60;
+      margin: 15px 0 10px;
+      font-size: 1.5em;
+    }
+    /* Dropdown Content */
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+    section.active .content {
+      max-height: 3000px;
+    }
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 15px 0;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    .btn:hover {
+      background: #ff85c0;
+      transform: translateY(-3px);
+    }
+    /* Practice Test Styles */
+    .practice-test {
+      background: #fff0f5;
+      padding: 25px 30px;
+      border-radius: 10px;
+      border: 2px solid #ffccd5;
+      animation: fadeIn 1.5s ease-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .practice-test h2 {
+      color: #d81b60;
+      margin-bottom: 20px;
+      font-size: 2em;
+      border-bottom: 2px solid #d81b60;
+      padding-bottom: 5px;
+      transition: color 0.3s;
+    }
+    .practice-test h2:hover {
+      color: #e91e63;
+    }
+    .practice-test ol {
+      list-style: decimal inside;
+    }
+    .practice-test li {
+      margin: 20px 0;
+      transition: background 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .practice-test li:hover {
+      background: #ffe4e1;
+    }
+    /* Answer and Explanation Styles */
+    .answer {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #ffe4e1;
+      border: 1px solid #f8bbd0;
+      border-radius: 5px;
+      color: #880e4f;
+      transition: background 0.3s, color 0.3s;
+    }
+    .show-answer {
+      cursor: pointer;
+      color: #880e4f;
+      text-decoration: underline;
+      margin-left: 10px;
+      font-size: 0.95em;
+      transition: color 0.3s;
+    }
+    .show-answer:hover {
+      color: #ad1457;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Accordion Icons */
+    .toggle-icon {
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    section.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      .toc, section, .practice-test {
+        padding: 20px;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .practice-test li {
+        margin: 15px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Mr. Gonzales Unit 6 Chem Review</h1>
+    <p>Review key concepts and test your understanding with this comprehensive practice test.</p>
+  </header>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#review">Review of Key Concepts</a></li>
+      <li><a href="#acid-base">Acid–Base Reaction</a></li>
+      <li><a href="#dissolution">Dissolution of a Strong Base</a></li>
+      <li><a href="#self-heating">Self‐Heating Reaction</a></li>
+      <li><a href="#metal-calorimetry">Metal Calorimetry</a></li>
+      <li><a href="#mixing-solutions">Mixing Solutions at Different Temperatures</a></li>
+      <li><a href="#mixing-samples">Mixing Samples of the Same Liquid</a></li>
+      <li><a href="#bomb-calorimetry">Bomb Calorimetry</a></li>
+      <li><a href="#energy-conservation">Conservation of Energy</a></li>
+      <li><a href="#dissolution-temp">Dissolution Temperature Change</a></li>
+      <li><a href="#phase-change">Particle Model for Phase Change</a></li>
+      <li><a href="#condensation">Condensation Enthalpy Comparison</a></li>
+      <li><a href="#heating-curve">Heating Curve &amp; Phase Change</a></li>
+      <li><a href="#reaction-enthalpy">Reaction Enthalpy &amp; Stoichiometry</a></li>
+      <li><a href="#thermite">Thermite Reaction</a></li>
+      <li><a href="#endothermic">Enthalpy Change (Endothermic Reaction)</a></li>
+      <li><a href="#bond-enthalpy-ozone">Bond Enthalpy in Ozone Conversion</a></li>
+      <li><a href="#bond-enthalpy-combustion">Bond Enthalpy via Combustion Data</a></li>
+      <li><a href="#hbond-energies">Reaction Enthalpy from Bond Energies</a></li>
+      <li><a href="#decomposition">Decomposition Reaction</a></li>
+      <li><a href="#formation-data">Reaction Enthalpy from Formation Data</a></li>
+      <li><a href="#propane">Combustion of Propane</a></li>
+      <li><a href="#hess-data">Hess’s Law – Additional Data</a></li>
+      <li><a href="#hess-combining">Hess’s Law – Combining Reactions</a></li>
+      <li><a href="#hess-formation">Hess’s Law – Required Formation Data</a></li>
+      <li><a href="#practice-test">Practice Test</a></li>
+    </ul>
+  </div>
+
+  <!-- Review of Key Concepts Section -->
+  <section id="review">
+    <h2>Review of Key Concepts <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <h3>Exothermic vs. Endothermic Reactions</h3>
+      <p>
+        <strong>Exothermic reactions</strong> release heat to the surroundings (temperature rises) whereas <strong>endothermic reactions</strong> absorb heat (temperature falls). In calorimetry experiments, a rise in temperature indicates an exothermic process.
+      </p>
+      <h3>Calorimetry</h3>
+      <p>
+        Calorimetry is the measurement of heat transfer in chemical reactions. A <em>coffee-cup calorimeter</em> is used for reactions at constant pressure, while a <em>bomb calorimeter</em> is used for constant-volume reactions such as combustion.
+      </p>
+      <h3>Phase Changes and Heating Curves</h3>
+      <p>
+        Heating curves graphically show how a substance’s temperature changes as it is heated. Plateaus on the curve indicate phase changes (melting, boiling) during which energy is absorbed without changing temperature (latent heat).
+      </p>
+      <h3>Hess’s Law and Reaction Enthalpy</h3>
+      <p>
+        Hess’s Law states that the overall enthalpy change for a reaction is the sum of the enthalpy changes for the individual steps. It allows you to calculate unknown enthalpy changes using known formation or combustion data.
+      </p>
+      <h3>Bond Enthalpies</h3>
+      <p>
+        Bond enthalpy is the energy required to break one mole of bonds in the gas phase. Calculations using bond energies involve subtracting the energy of bonds formed from the energy of bonds broken to estimate the overall reaction enthalpy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Acid–Base Reaction Section -->
+  <section id="acid-base">
+    <h2>Acid–Base Reaction <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Acid–base reactions typically involve the neutralization of an acid by a base, resulting in the formation of water and a salt. The reaction is exothermic, releasing heat that can raise the temperature of the solution.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dissolution of a Strong Base Section -->
+  <section id="dissolution">
+    <h2>Dissolution of a Strong Base <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        When a strong base like KOH dissolves in water, the process is exothermic. The dissolution releases heat, increasing the water’s temperature.
+      </p>
+    </div>
+  </section>
+
+  <!-- Self‐Heating Reaction Section -->
+  <section id="self-heating">
+    <h2>Self‐Heating Reaction <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Self-heating food containers use exothermic reactions (e.g., CaO with H₂O) to generate heat. The reaction releases energy that is transferred to the food, warming it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Metal Calorimetry Section -->
+  <section id="metal-calorimetry">
+    <h2>Metal Calorimetry <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        In metal calorimetry, a hot metal is placed in cooler water. Heat transfers from the metal to the water until equilibrium is reached. This is an application of energy conservation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mixing Solutions at Different Temperatures Section -->
+  <section id="mixing-solutions">
+    <h2>Mixing Solutions at Different Temperatures <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        When two solutions of the same solute at different temperatures are mixed, energy is transferred from the warmer to the cooler solution until the temperatures equalize.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mixing Samples of the Same Liquid Section -->
+  <section id="mixing-samples">
+    <h2>Mixing Samples of the Same Liquid <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Mixing two samples of the same liquid at different temperatures causes thermal energy to transfer from the warmer sample to the cooler one until equilibrium is reached.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bomb Calorimetry Section -->
+  <section id="bomb-calorimetry">
+    <h2>Bomb Calorimetry <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Bomb calorimetry is used to measure the heat of combustion at constant volume. The temperature rise of the surrounding water (with known mass and specific heat) is used to calculate the heat released.
+      </p>
+    </div>
+  </section>
+
+  <!-- Conservation of Energy Section -->
+  <section id="energy-conservation">
+    <h2>Conservation of Energy <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        In any chemical reaction, the energy lost by one part of the system is gained by another. In calorimetry, the heat lost by a hot substance is equal (with opposite sign) to the heat gained by the cooler substance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dissolution Temperature Change Section -->
+  <section id="dissolution-temp">
+    <h2>Dissolution Temperature Change <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        When a substance dissolves and the solution’s temperature changes, the difference between the final and initial temperature (ΔT) indicates the heat absorbed or released during dissolution.
+      </p>
+    </div>
+  </section>
+
+  <!-- Particle Model for Phase Change Section -->
+  <section id="phase-change">
+    <h2>Particle Model for Phase Change <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        In phase changes, such as evaporation and condensation, particles gain or lose kinetic energy. The energy required for evaporation is released when the vapor condenses.
+      </p>
+    </div>
+  </section>
+
+  <!-- Condensation Enthalpy Comparison Section -->
+  <section id="condensation">
+    <h2>Condensation Enthalpy Comparison <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Different substances release different amounts of energy upon condensation. Comparing the enthalpy values for H₂O and H₂S helps illustrate how many moles of a substance must condense to equal the energy release of another.
+      </p>
+    </div>
+  </section>
+
+  <!-- Heating Curve & Phase Change Section -->
+  <section id="heating-curve">
+    <h2>Heating Curve &amp; Phase Change <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Heating curves illustrate the temperature change of a substance as heat is added. Plateaus indicate phase changes where energy is used to overcome intermolecular forces rather than increase temperature.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reaction Enthalpy & Stoichiometry Section -->
+  <section id="reaction-enthalpy">
+    <h2>Reaction Enthalpy &amp; Stoichiometry <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Reaction enthalpy (ΔH) is determined by the stoichiometry of the reaction. It represents the overall heat change and can be calculated using bond energies or standard formation values.
+      </p>
+    </div>
+  </section>
+
+  <!-- Thermite Reaction Section -->
+  <section id="thermite">
+    <h2>Thermite Reaction <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        The thermite reaction (e.g., 2 Al + Fe₂O₃ → 2 Fe + Al₂O₃) is highly exothermic. It is a classic example of a reaction that releases large amounts of energy due to the formation of very stable products.
+      </p>
+    </div>
+  </section>
+
+  <!-- Enthalpy Change (Endothermic Reaction) Section -->
+  <section id="endothermic">
+    <h2>Enthalpy Change (Endothermic Reaction) <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Endothermic reactions absorb energy, resulting in a positive ΔH. When using calorimetry data, a drop in temperature of the surroundings can indicate that the reaction absorbed heat.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bond Enthalpy in Ozone Conversion Section -->
+  <section id="bond-enthalpy-ozone">
+    <h2>Bond Enthalpy in Ozone Conversion <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Bond enthalpy calculations can be used to estimate the energy of bonds within a molecule. In the conversion of ozone to oxygen, overall ΔH and the number of bonds are used to determine the average bond enthalpy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bond Enthalpy via Combustion Data Section -->
+  <section id="bond-enthalpy-combustion">
+    <h2>Bond Enthalpy via Combustion Data <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Combustion reactions provide a means to calculate average bond enthalpies by comparing the energy required to break bonds in reactants with the energy released when new bonds are formed in products.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reaction Enthalpy from Bond Energies Section -->
+  <section id="hbond-energies">
+    <h2>Reaction Enthalpy from Bond Energies <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        The reaction enthalpy from bond energies is calculated by subtracting the total energy of bonds formed from the total energy required to break bonds. This method uses average bond enthalpy values to approximate ΔH.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reaction Enthalpy from Formation Data Section -->
+  <section id="formation-data">
+    <h2>Reaction Enthalpy from Formation Data <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Standard enthalpies of formation are used to calculate the reaction enthalpy. By summing the formation values of products and subtracting those of reactants, you can determine the overall ΔH of a reaction.
+      </p>
+    </div>
+  </section>
+
+  <!-- Combustion of Propane Section -->
+  <section id="propane">
+    <h2>Combustion of Propane <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        The combustion of propane is a common reaction in which propane reacts with oxygen to form CO₂ and H₂O. The reaction enthalpy can be calculated using the formation enthalpies of the reactants and products.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hess’s Law – Additional Data Section -->
+  <section id="hess-data">
+    <h2>Hess’s Law – Additional Data <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        When using Hess’s Law to calculate unknown enthalpy changes, additional data (such as a formation enthalpy) may be required to complete the reaction cycle.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hess’s Law – Combining Reactions Section -->
+  <section id="hess-combining">
+    <h2>Hess’s Law – Combining Reactions <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        Hess’s Law allows you to add or subtract reactions to obtain the overall enthalpy change. The key is to ensure that the reaction steps, when combined, match the target reaction.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hess’s Law – Required Formation Data Section -->
+  <section id="hess-formation">
+    <h2>Hess’s Law – Required Formation Data <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content">
+      <p>
+        To apply Hess’s Law fully, sometimes the standard enthalpy of formation of one or more compounds must be known. This information is necessary to calculate the overall reaction enthalpy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Practice Test Section -->
+  <section id="practice-test">
+    <h2>Practice Test <span class="toggle-icon">&#9660;</span></h2>
+    <div class="content practice-test">
+      <h3>Answer the following 24 questions to test your understanding:</h3>
+      <ol>
+        <!-- Question 1 -->
+        <li>
+          <strong>Acid–Base Reaction in a Coffee‐Cup Calorimeter</strong><br>
+          When 50.0 mL of 1.0 M HNO₃(aq) at 22.0 °C is mixed with 50.0 mL of 1.0 M NaOH(aq) at 22.0 °C in a coffee‐cup calorimeter, the final temperature is 27.0 °C. Which conclusion is best supported by this observation?
+          <ul>
+            <li>A) The reaction is endothermic, because heat is absorbed from the surroundings.</li>
+            <li>B) The reaction is endothermic, because the reactants cool upon mixing.</li>
+            <li>C) The reaction is exothermic, because heat is released by the reaction and is absorbed by the solution.</li>
+            <li>D) The reaction is exothermic, because energy is absorbed by the reactants during mixing.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> C<br>
+            <em>Step-by-step Explanation:</em> The neutralization reaction releases heat. The increase in temperature of the solution confirms that energy is released (exothermic process).
+          </div>
+        </li>
+        <!-- Question 2 -->
+        <li>
+          <strong>Dissolution of a Strong Base</strong><br>
+          Crystalline KOH(s) is added to water and the solution’s temperature increases noticeably. Which statement correctly explains the observation?
+          <ul>
+            <li>A) The process is endothermic because the water absorbs energy.</li>
+            <li>B) The process is endothermic because the KOH crystals absorb energy.</li>
+            <li>C) The process is exothermic because the water releases energy as the KOH dissolves.</li>
+            <li>D) The process is exothermic because the dissolution of KOH releases heat into the water.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> D<br>
+            <em>Explanation:</em> Dissolving KOH is exothermic; the release of heat raises the water’s temperature.
+          </div>
+        </li>
+        <!-- Question 3 -->
+        <li>
+          <strong>Self‐Heating Food Container Reaction</strong><br>
+          A self-heating can of soup uses the reaction: CaO(s) + H₂O(l) → Ca(OH)₂(s) (ΔH° = –64 kJ/mol). Which statement best explains how this reaction heats the soup?
+          <ul>
+            <li>A) The reaction is endothermic, so it draws heat from the soup.</li>
+            <li>B) The reaction is exothermic, so it releases heat that warms the soup.</li>
+            <li>C) The reaction is endothermic, but the container’s insulation causes the soup to warm.</li>
+            <li>D) The reaction is exothermic, but it absorbs heat from the surroundings before warming the soup.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> The reaction releases heat as CaO reacts with water; this heat directly warms the soup.
+          </div>
+        </li>
+        <!-- Question 4 -->
+        <li>
+          <strong>Metal Calorimetry</strong><br>
+          A 10.0 g copper pellet initially at 80.0 °C is dropped into an insulated cup containing 50.0 g of water at 20.0 °C. Which explanation best justifies the expectation that the water’s temperature will rise?
+          <ul>
+            <li>A) Thermal energy is transferred from the hot copper to the water through molecular collisions, increasing the water’s kinetic energy.</li>
+            <li>B) The copper’s electrons transfer energy to the water, breaking hydrogen bonds.</li>
+            <li>C) The water’s molecules lose potential energy as they interact with the copper’s lattice.</li>
+            <li>D) The copper pellet absorbs heat from the water, resulting in an increase in water temperature.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> The hot copper transfers its thermal energy to the cooler water through collisions, raising the water’s temperature.
+          </div>
+        </li>
+        <!-- Question 5 -->
+        <li>
+          <strong>Mixing Two Solutions at Different Temperatures</strong><br>
+          Two aqueous solutions of KCl (same concentration and volume) are initially at 15.0 °C and 30.0 °C. When combined, which of the following occurs?
+          <ul>
+            <li>A) The particles in the cooler solution lose kinetic energy upon mixing.</li>
+            <li>B) The particles in the cooler solution gain kinetic energy until the system reaches thermal equilibrium.</li>
+            <li>C) The overall average kinetic energy becomes lower than that of the cooler solution.</li>
+            <li>D) The overall average kinetic energy becomes higher than that of the warmer solution.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> The cooler solution’s molecules absorb energy from the warmer solution until both reach the same temperature.
+          </div>
+        </li>
+        <!-- Question 6 -->
+        <li>
+          <strong>Mixing Two Samples of the Same Liquid</strong><br>
+          Two samples of ethanol are mixed: Sample 1 is 100.0 mL at 45.0 °C; Sample 2 is 200.0 mL at 25.0 °C. Which explanation best describes the energy transfer?
+          <ul>
+            <li>A) Energy is not exchanged because both samples are the same substance.</li>
+            <li>B) Energy is transferred from Sample 2 to Sample 1 due to its larger volume.</li>
+            <li>C) Energy is transferred because the higher-density sample loses thermal energy.</li>
+            <li>D) Energy is transferred from the warmer ethanol molecules in Sample 1 to the cooler ones in Sample 2 until equilibrium is reached.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> D<br>
+            <em>Explanation:</em> The warmer ethanol transfers energy to the cooler sample until both reach the same temperature.
+          </div>
+        </li>
+        <!-- Question 7 -->
+        <li>
+          <strong>Bomb Calorimetry of a Liquid Fuel</strong><br>
+          A 1.5 g sample of a liquid fuel is combusted in a constant-volume calorimeter surrounded by 3.0 L of water. The water temperature rises from 20.0 °C to 24.0 °C (density = 1.00 g/mL; specific heat = 4.18 J/g·°C). Estimate the heat released by the combustion.
+          <ul>
+            <li>A) 50 kJ</li>
+            <li>B) 150 kJ</li>
+            <li>C) 250 kJ</li>
+            <li>D) 350 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> Calculate the heat absorbed by the water (mass × specific heat × ΔT) to estimate the heat released by the combustion reaction.
+          </div>
+        </li>
+        <!-- Question 8 -->
+        <li>
+          <strong>Conservation of Energy in Calorimetry</strong><br>
+          In a calorimetry experiment, a 15.0 g piece of tin (Sn) cools from 90.0 °C to 45.0 °C, while 30.0 g of water warms from 25.0 °C to 45.0 °C. Which equation best represents the heat exchange?
+          <ul>
+            <li>A) –q₍Sn₎ = ½ q₍H₂O₎</li>
+            <li>B) –q₍Sn₎ = 2 q₍H₂O₎</li>
+            <li>C) –q₍Sn₎ = 5 q₍H₂O₎</li>
+            <li>D) –q₍Sn₎ = q₍H₂O₎</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> D<br>
+            <em>Explanation:</em> The heat lost by tin equals the heat gained by water (with a sign change), according to energy conservation.
+          </div>
+        </li>
+        <!-- Question 9 -->
+        <li>
+          <strong>Dissolution Temperature Change</strong><br>
+          A student dissolves 12.00 g of NH₄Cl(s) in 150.0 g of water in a coffee‐cup calorimeter. The temperature drops from 26.0 °C to 20.5 °C. What is ΔT (to the proper significant figures)?
+          <ul>
+            <li>A) –5.50 °C</li>
+            <li>B) –5.5 °C</li>
+            <li>C) –5.500 °C</li>
+            <li>D) –6.0 °C</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> ΔT = final temperature – initial temperature = 20.5 °C – 26.0 °C = –5.5 °C.
+          </div>
+        </li>
+        <!-- Question 10 -->
+        <li>
+          <strong>Particle Model for Phase Change</strong><br>
+          In a diagram of evaporation, molecules absorb energy to leave the liquid. For condensation, which statement best compares the energy changes?
+          <ul>
+            <li>A) The energy released when a mole of gas condenses equals the energy required for evaporation.</li>
+            <li>B) More energy is released during condensation than is absorbed during evaporation.</li>
+            <li>C) Less energy is released during condensation than is absorbed during evaporation.</li>
+            <li>D) The energy changes vary significantly with different substances.</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> Under ideal conditions, the energy released during condensation equals the energy required for evaporation.
+          </div>
+        </li>
+        <!-- Question 11 -->
+        <li>
+          <strong>Condensation Enthalpy Comparison</strong><br>
+          A table shows ΔHvap for H₂S = 18 kJ/mol and for H₂O = 44 kJ/mol. Approximately how many moles of H₂S must condense to release the same heat as 1 mole of H₂O condensing?
+          <ul>
+            <li>A) 1 mole</li>
+            <li>B) 2 moles</li>
+            <li>C) 2.5 moles</li>
+            <li>D) 3 moles</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> C<br>
+            <em>Explanation:</em> Since H₂S releases less heat per mole upon condensation, about 2.5 moles of H₂S are needed to match the heat released by 1 mole of H₂O.
+          </div>
+        </li>
+        <!-- Question 12 -->
+        <li>
+          <strong>Heating Curve and Phase Change</strong><br>
+          The heating curve for 1.0 mole of Al shows a plateau at 660 °C (melting point) with ΔH₍fusion₎ = 10.7 kJ/mol. Approximately how much heat is absorbed when 0.40 mole of Al melts?
+          <ul>
+            <li>A) 2.1 kJ</li>
+            <li>B) 4.3 kJ</li>
+            <li>C) 10.7 kJ</li>
+            <li>D) 26.8 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> 0.40 moles × 10.7 kJ/mol ≈ 4.3 kJ of heat is absorbed.
+          </div>
+        </li>
+        <!-- Question 13 -->
+        <li>
+          <strong>Reaction Enthalpy and Stoichiometry</strong><br>
+          For the reaction Fe₂O₃(s) + 3 CO(g) → 2 Fe(s) + 3 CO₂(g) (ΔH° = –1000 kJ/mol), if 1.00 mole of Fe₂O₃ reacts, how much heat is released?
+          <ul>
+            <li>A) 1000 kJ absorbed</li>
+            <li>B) 1000 kJ released</li>
+            <li>C) 500 kJ released</li>
+            <li>D) 1500 kJ released</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> According to the reaction, 1 mole of Fe₂O₃ produces an enthalpy change of –1000 kJ (released).
+          </div>
+        </li>
+        <!-- Question 14 -->
+        <li>
+          <strong>Thermite Reaction Calculation</strong><br>
+          The thermite reaction is: 2 Al(s) + Fe₂O₃(s) → 2 Fe(s) + Al₂O₃(s) with ΔH° = –850 kJ/mol. How much heat is released when 54.0 g of Al (molar mass = 27.0 g/mol) reacts with excess Fe₂O₃?
+          <ul>
+            <li>A) 425 kJ</li>
+            <li>B) 850 kJ</li>
+            <li>C) 1275 kJ</li>
+            <li>D) 1700 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> 54.0 g Al ÷ 27.0 g/mol = 2 moles; the reaction releases –850 kJ per 2 moles.
+          </div>
+        </li>
+        <!-- Question 15 -->
+        <li>
+          <strong>Enthalpy Change for an Endothermic Reaction</strong><br>
+          For the reaction 3 NO₂(g) + N₂(g) → 2 N₂O₅(g) (ΔH° = +200 kJ/mol), how much heat is absorbed when 0.50 mole of NO₂ reacts with excess N₂?
+          <ul>
+            <li>A) 16.7 kJ</li>
+            <li>B) 33.3 kJ</li>
+            <li>C) 66.7 kJ</li>
+            <li>D) 100.0 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> Since the full reaction (using 3 moles of NO₂) absorbs 200 kJ, 0.50 mole of NO₂ will absorb approximately (0.50/3)*200 ≈ 33.3 kJ.
+          </div>
+        </li>
+        <!-- Question 16 -->
+        <li>
+          <strong>Bond Enthalpy Estimation in Ozone Conversion</strong><br>
+          The conversion of ozone to oxygen is: 2 O₃(g) → 3 O₂(g) with ΔH° = –270 kJ/mol. Given the average bond enthalpy for O=O in O₂ is 495 kJ/mol, estimate the average bond enthalpy for the O–O bonds in O₃.
+          <ul>
+            <li>A) 0 kJ/mol</li>
+            <li>B) 220 kJ/mol</li>
+            <li>C) 440 kJ/mol</li>
+            <li>D) 495 kJ/mol</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> C<br>
+            <em>Explanation:</em> Using the overall energy change and noting that each O₃ molecule has 2 bonds, the calculation gives an approximate bond enthalpy of 440 kJ/mol.
+          </div>
+        </li>
+        <!-- Question 17 -->
+        <li>
+          <strong>Estimating Bond Enthalpy Using Combustion Data</strong><br>
+          The combustion of methane is: CH₄ + 2 O₂ → CO₂ + 2 H₂O. Given bond enthalpies—C–H: 412, O=O: 495, C=O: 799, O–H: 463 (all in kJ/mol)—which expression correctly estimates the average bond enthalpy per mole of O₂ using ΔH₍rxn₎?
+          <ul>
+            <li>A) ½[ΔH₍rxn₎ + 2(799) + 4(463) – 4(412)] kJ/mol</li>
+            <li>B) 2[ΔH₍rxn₎ + 799 + 2(463) – 2(412)] kJ/mol</li>
+            <li>C) ½[ΔH₍rxn₎ – 2(495) + 4(463) + 4(412)] kJ/mol</li>
+            <li>D) 2[ΔH₍rxn₎ – 495 + 2(463) + 412] kJ/mol</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> The proper procedure is to sum the energies of bonds formed and subtract those broken, then divide by 2 to obtain the average per mole of O₂.
+          </div>
+        </li>
+        <!-- Question 18 -->
+        <li>
+          <strong>Reaction Enthalpy from Bond Energies</strong><br>
+          The formation of hydrogen bromide: H₂(g) + Br₂(g) → 2 HBr(g) given bond enthalpies—H–H: 436, Br–Br: 193, H–Br: 366 (kJ/mol). What is the approximate enthalpy change for the reaction?
+          <ul>
+            <li>A) –103 kJ/mol</li>
+            <li>B) –50 kJ/mol</li>
+            <li>C) +103 kJ/mol</li>
+            <li>D) +50 kJ/mol</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> Breaking the H–H and Br–Br bonds and forming H–Br bonds results in an overall energy change of approximately –103 kJ/mol.
+          </div>
+        </li>
+        <!-- Question 19 -->
+        <li>
+          <strong>Decomposition Reaction Using Formation Enthalpies</strong><br>
+          Calcium sulfate decomposes: CaSO₄(s) → CaO(s) + SO₃(g). Given ΔH°₍f₎ values: CaSO₄ = –1430, CaO = –640, SO₃ = –395 kJ/mol, estimate ΔH for the decomposition.
+          <ul>
+            <li>A) –395 kJ</li>
+            <li>B) +395 kJ</li>
+            <li>C) –1035 kJ</li>
+            <li>D) +1035 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> Calculating ΔH using the formation enthalpies gives a positive value (endothermic decomposition) of approximately +395 kJ.
+          </div>
+        </li>
+        <!-- Question 20 -->
+        <li>
+          <strong>Reaction Enthalpy from Standard Formation Data</strong><br>
+          Using ΔH°₍f₎ values for NO ( +90 kJ/mol), NO₂ ( +33 kJ/mol), and O₂ (0 kJ/mol), calculate ΔH° for: NO(g) + ½ O₂(g) → NO₂(g).
+          <ul>
+            <li>A) –57 kJ/mol</li>
+            <li>B) +57 kJ/mol</li>
+            <li>C) –123 kJ/mol</li>
+            <li>D) +123 kJ/mol</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> Using the formula ΔH° = [ΔH°(products)] – [ΔH°(reactants)], the calculation yields –57 kJ/mol.
+          </div>
+        </li>
+        <!-- Question 21 -->
+        <li>
+          <strong>Combustion of Propane Using Formation Enthalpies</strong><br>
+          Propane combusts: C₃H₈(g) + 5 O₂(g) → 3 CO₂(g) + 4 H₂O(g). Given ΔH°₍f₎ for C₃H₈ = –104, CO₂ = –394, H₂O(g) = –241 kJ/mol, calculate ΔH° for the reaction.
+          <ul>
+            <li>A) –104 kJ</li>
+            <li>B) –2042 kJ</li>
+            <li>C) +2042 kJ</li>
+            <li>D) –3000 kJ</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> B<br>
+            <em>Explanation:</em> The overall reaction enthalpy is calculated by subtracting the sum of the formation enthalpies of the reactants from that of the products, yielding approximately –2042 kJ.
+          </div>
+        </li>
+        <!-- Question 22 -->
+        <li>
+          <strong>Hess’s Law and Additional Data Requirement</strong><br>
+          Given: Reaction 1: C₂H₄(g) + 3 O₂(g) → 2 CO₂(g) + 2 H₂O(l) (ΔH° = –1320 kJ) and Reaction 2: C(graphite) + O₂(g) → CO₂(g) (ΔH° = –394 kJ). To calculate the enthalpy change for forming ethylene from its elements: 2 C(graphite) + 2 H₂(g) → C₂H₄(g), which additional information is needed?
+          <ul>
+            <li>A) ΔH°₍f₎ for C₂H₄(g)</li>
+            <li>B) ΔH°₍f₎ for H₂O(l)</li>
+            <li>C) ΔH°₍f₎ for CO₂(g)</li>
+            <li>D) ΔH°₍f₎ for O₂(g)</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> The standard enthalpy of formation for C₂H₄(g) is needed to complete the Hess’s law calculation.
+          </div>
+        </li>
+        <!-- Question 23 -->
+        <li>
+          <strong>Hess’s Law: Combining Reactions</strong><br>
+          You are given: Reaction 1: 2 NO₂(g) → N₂O₄(g) (ΔH° = –10 kJ). An unknown Reaction 2 is added so that the overall reaction becomes: 2 NO₂(g) + O₃(g) → N₂O₅(g) + O₂(g). Which of the following could represent Reaction 2?
+          <ul>
+            <li>A) N₂O₄(g) + O₃(g) → N₂O₅(g) + O₂(g)</li>
+            <li>B) O₃(g) → O₂(g) + O(½)</li>
+            <li>C) 2 NO₂(g) + O(g) → N₂O₅(g)</li>
+            <li>D) N₂O₄(g) + ½ O₂(g) → N₂O₅(g)</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> Adding the reaction N₂O₄(g) + O₃(g) → N₂O₅(g) + O₂(g) to Reaction 1 yields the overall target reaction.
+          </div>
+        </li>
+        <!-- Question 24 -->
+        <li>
+          <strong>Hess’s Law and Required Formation Data</strong><br>
+          Consider the reactions: (i) H₂(g) + ½ O₂(g) → H₂O(l) (ΔH° = –285 kJ) and (ii) N₂(g) + (3/2) O₂(g) → NO(g) (ΔH° = +180 kJ). To use Hess’s law to determine ΔH° for H₂O(l) + NO(g) → HNO₃(aq) + H₂(g), which additional standard enthalpy value is needed?
+          <ul>
+            <li>A) ΔH°₍f₎ for HNO₃(aq)</li>
+            <li>B) ΔH°₍f₎ for NO₂(g)</li>
+            <li>C) ΔH°₍f₎ for O₂(g)</li>
+            <li>D) ΔH°₍f₎ for H₂O(g)</li>
+          </ul>
+          <span class="show-answer" onclick="toggleAnswer(this)">Show Answer</span>
+          <div class="answer">
+            <strong>Answer:</strong> A<br>
+            <em>Explanation:</em> The formation enthalpy for HNO₃(aq) is required to complete the Hess’s law calculation.
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="text-align:center; padding:25px 0; color:#777;">
+    <p>&copy; 2025 Mr. Gonzales.</p>
+  </footer>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Accordion functionality for sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const header = section.querySelector('h2');
+      const content = section.querySelector('.content');
+      header.addEventListener('click', () => {
+        section.classList.toggle('active');
+        if (section.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Toggle answer visibility and adjust parent's max-height
+    function toggleAnswer(element) {
+      const answerDiv = element.nextElementSibling;
+      if (answerDiv.style.display === "block") {
+        answerDiv.style.display = "none";
+        element.textContent = "Show Answer";
+      } else {
+        answerDiv.style.display = "block";
+        element.textContent = "Hide Answer";
+      }
+      // Adjust the section's max-height
+      const section = element.closest('section');
+      const content = section.querySelector('.content');
+      content.style.maxHeight = 'none';
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  </script>
+</body>
+</html>
